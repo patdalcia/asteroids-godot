@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs8k47mnno0tl"]
+
+[ext_resource type="Script" uid="uid://bpblc0aylaqlh" path="res://Assets/Scripts/hud.gd" id="1_e0onf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e0onf"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fccik"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_e0onf")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 198.0
+offset_bottom = 61.0
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_e0onf")
+
+[node name="Lives" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1212.0001
+offset_top = 21.0
+offset_right = 1604.0001
+offset_bottom = 149.0
+scale = Vector2(0.38268906, 0.38268906)
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 67.0
+offset_right = 68.0
+offset_bottom = 90.0
+label_settings = SubResource("LabelSettings_fccik")
