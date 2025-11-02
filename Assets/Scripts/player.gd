@@ -3,9 +3,9 @@ class_name Player extends CharacterBody2D
 signal laser_shot(laser)
 signal died
 
-@export var acceleration := 10.0
-@export var max_speed := 350.0
-@export var rotation_speed := 200.0
+@export var acceleration := 15.0
+@export var max_speed := 300.0
+@export var rotation_speed := 250.0
 
 @onready var muzzle = $Muzzle
 @onready var sprite = $Sprite2D

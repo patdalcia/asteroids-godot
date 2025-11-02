@@ -1,6 +1,8 @@
 @tool
 extends Node2D
 
+signal start_game_pressed
+
 const ScoreItem = preload("ScoreItem.tscn")
 const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
 
@@ -19,12 +21,18 @@ func _ready():
 		scores = SilentWolf.Scores.leaderboards[ld_name]
 	var local_scores = SilentWolf.Scores.local_scores
 	
+	#add_loading_scores_message()
+	#var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
+	#scores = sw_result.scores
+	#hide_message()
+	#render_board(scores, local_scores)
+	
 	if len(scores) > 0: 
 		render_board(scores, local_scores)
 	else:
 		# use a signal to notify when the high scores have been returned, and show a "loading" animation until it's the case...
 		add_loading_scores_message()
-		var sw_result = await SilentWolf.Scores.get_scores().sw_get_scores_complete
+		var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
 		scores = sw_result.scores
 		hide_message()
 		render_board(scores, local_scores)
@@ -123,5 +131,7 @@ func clear_leaderboard() -> void:
 func _on_CloseButton_pressed() -> void:
 	var scene_name = SilentWolf.scores_config.open_scene_on_close
 	SWLogger.info("Closing SilentWolf leaderboard, switching to scene: " + str(scene_name))
+	
+	emit_signal("start_game_pressed")
 	#global.reset()
 	get_tree().change_scene_to_file(scene_name)

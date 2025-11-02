@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqfuxh4nf4kh7"]
+[gd_scene load_steps=9 format=3 uid="uid://dqfuxh4nf4kh7"]
 
 [ext_resource type="Script" uid="uid://cipj665af54vf" path="res://Assets/Scripts/game.gd" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bs8k47mnno0tl" path="res://Scenes/hud.tscn" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dfdjnoisgivs7" path="res://Scenes/game_over_screen.tscn" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://b68tn7k4x26ve" path="res://Scenes/level_success_screen.tscn" id="4_i6g32"]
-[ext_resource type="Script" uid="uid://bt4s7kqopwq77" path="res://Assets/Scripts/level_success_screen.gd" id="5_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://cgj0dk60t8vog" path="res://Scenes/start_game_screen.tscn" id="5_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://cjqn5b4sx3adh" path="res://Scenes/player_spawn_area.tscn" id="6_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://10vu5oorgmul" path="res://Scenes/player.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://b2h8ok8yfc7wb" path="res://addons/silent_wolf/Scores/Leaderboard.tscn" id="6_v158k"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qxrlw")
@@ -20,7 +21,12 @@ visible = false
 
 [node name="LevelSuccessScreen" parent="UI" instance=ExtResource("4_i6g32")]
 visible = false
-script = ExtResource("5_1l0tm")
+
+[node name="StartGameScreen" parent="UI" instance=ExtResource("5_1l0tm")]
+visible = false
+
+[node name="Leaderboard" parent="UI" instance=ExtResource("6_v158k")]
+position = Vector2(54, 0)
 
 [node name="Player" parent="." instance=ExtResource("6_i6g32")]
 position = Vector2(643, 355)

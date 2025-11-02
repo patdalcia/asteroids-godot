@@ -14,6 +14,8 @@ extends Node2D
 @onready var player_spawn_pos = $PlayerSpawnPos
 @onready var player_spawn_area = $PlayerSpawnPos/PlayerSpawnArea
 @onready var level_ui = $UI/LevelSuccessScreen
+@onready var start_ui = $UI/Leaderboard
+
 
 var asteroid_scene = preload("res://Scenes/asteroid.tscn")
 
@@ -39,6 +41,9 @@ func _ready():
 	randomize()
 	game_over_screen.visible = false
 	level_success_screen.visible = false
+	
+	hud.visible = false
+	player.visible = false
 
 	score = 0
 	lives = 3
@@ -49,8 +54,12 @@ func _ready():
 
 	if level_ui.has_signal("next_level_pressed"):
 		level_ui.connect("next_level_pressed", Callable(self, "_on_next_level_button_pressed"))
-
-	start_level()
+	if start_ui.has_signal("start_game_pressed"):
+		start_ui.connect("start_game_pressed", Callable(self, "_on_start_game_button_pressed"))
+	if game_over_screen.has_signal("submit_button_pressed"):
+		game_over_screen.connect("submit_button_pressed", Callable(self, "_on_submit_button_pressed"))
+	start_ui.visible = true
+	#start_level()
 
 func start_level():
 	active_asteroids = 0
@@ -141,3 +150,16 @@ func _on_next_level_button_pressed() -> void:
 	level_success_screen.visible = false
 	level += 1
 	start_level()
+	
+func _on_start_game_button_pressed() -> void:
+	start_ui.visible = false
+	
+	hud.visible = true
+	player.visible = true
+	
+	level = 1
+	start_level()
+
+func _on_submit_button_pressed(player_name) -> void:
+	SilentWolf.Scores.save_score(player_name, score)
+	print("NAME: " + player_name + " SCORE: " + str(score))

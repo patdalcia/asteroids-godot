@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2h8ok8yfc7wb"]
+[gd_scene load_steps=7 format=3 uid="uid://b2h8ok8yfc7wb"]
 
 [ext_resource type="Script" uid="uid://bi1pevaduj0gy" path="res://addons/silent_wolf/Scores/Leaderboard.gd" id="1"]
 [ext_resource type="Theme" uid="uid://d2eakbmaefnt6" path="res://addons/silent_wolf/assets/themes/sw_theme.tres" id="2_ixaq4"]
 [ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pbpo"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dnr8"]
+font_size = 54
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_j1gah"]
 
@@ -16,15 +24,22 @@ visible = false
 layout_mode = 2
 
 [node name="Board" type="VBoxContainer" parent="."]
-offset_left = 232.0
-offset_top = 3.0
-offset_right = 1738.0
-offset_bottom = 1070.0
+offset_left = 177.00002
+offset_top = 30.999998
+offset_right = 1683.0
+offset_bottom = 1098.0
+scale = Vector2(0.61793935, 0.61793935)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_ixaq4")
 theme_override_constants/separation = 48
 alignment = 1
+
+[node name="Label2" type="Label" parent="Board"]
+layout_mode = 2
+text = "WELCOME TO MY GAME"
+label_settings = SubResource("LabelSettings_5pbpo")
+horizontal_alignment = 1
 
 [node name="TitleContainer" type="CenterContainer" parent="Board"]
 layout_mode = 2
@@ -33,6 +48,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Leaderboard"
+label_settings = SubResource("LabelSettings_7dnr8")
 horizontal_alignment = 1
 
 [node name="MessageContainer" type="CenterContainer" parent="Board"]
@@ -58,6 +74,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Close Leaderboard"
+text = "START GAME"
 
 [connection signal="pressed" from="Board/CloseButtonContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

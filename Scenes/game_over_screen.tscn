@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfdjnoisgivs7"]
+[gd_scene load_steps=4 format=3 uid="uid://dfdjnoisgivs7"]
 
 [ext_resource type="Script" uid="uid://6yu7o250pe4" path="res://Assets/Scripts/game_over_screen.gd" id="1_0gua7"]
+[ext_resource type="FontFile" uid="uid://b32u6qqntep2x" path="res://Assets/Fonts/ProggyClean.ttf" id="2_jb6in"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wydum"]
+font = ExtResource("2_jb6in")
 font_size = 64
 
 [node name="GameOverScreen" type="Control"]
@@ -29,6 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_wydum")
+horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 1
@@ -37,13 +40,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -108.0
+offset_top = 132.0
+offset_right = 108.0
+offset_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "TRY AGAIN"
+theme_override_fonts/font = ExtResource("2_jb6in")
+theme_override_font_sizes/font_size = 30
+text = "Save and Try Again"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.28125
+offset_top = -15.5
+offset_right = 34.28125
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jb6in")
+placeholder_text = "ENTER INITIALS"
+alignment = 1
+max_length = 3
+expand_to_text_length = true
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

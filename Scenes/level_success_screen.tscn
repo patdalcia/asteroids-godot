@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b68tn7k4x26ve"]
+[gd_scene load_steps=4 format=3 uid="uid://b68tn7k4x26ve"]
 
 [ext_resource type="Script" uid="uid://bt4s7kqopwq77" path="res://Assets/Scripts/level_success_screen.gd" id="1_wb38v"]
+[ext_resource type="FontFile" uid="uid://b32u6qqntep2x" path="res://Assets/Fonts/ProggyClean.ttf" id="2_khifj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_04uvu"]
+font = ExtResource("2_khifj")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
@@ -29,6 +31,7 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_khifj")
 theme_override_font_sizes/font_size = 40
 text = "NEXT LEVEL"
 
@@ -48,5 +51,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "LEVEL COMPLETE"
 label_settings = SubResource("LabelSettings_04uvu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]
