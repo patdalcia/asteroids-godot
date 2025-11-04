@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfdjnoisgivs7"]
+[gd_scene load_steps=8 format=3 uid="uid://dfdjnoisgivs7"]
 
 [ext_resource type="Script" uid="uid://6yu7o250pe4" path="res://Assets/Scripts/game_over_screen.gd" id="1_0gua7"]
 [ext_resource type="FontFile" uid="uid://b32u6qqntep2x" path="res://Assets/Fonts/ProggyClean.ttf" id="2_jb6in"]
@@ -6,11 +6,24 @@
 [sub_resource type="LabelSettings" id="LabelSettings_wydum"]
 font = ExtResource("2_jb6in")
 font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kk8k2"]
+font = ExtResource("2_jb6in")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y8man"]
+font = ExtResource("2_jb6in")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jb6in"]
 font = ExtResource("2_jb6in")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jb6in"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -23,9 +36,15 @@ script = ExtResource("1_0gua7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -414.5
+offset_top = -205.5
+offset_right = 414.5
+offset_bottom = 205.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
@@ -38,16 +57,27 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_wydum")
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Enter initials into box below"
+label_settings = SubResource("LabelSettings_kk8k2")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Press [enter] or tap button below to save score and play again."
+label_settings = SubResource("LabelSettings_y8man")
+horizontal_alignment = 1
+
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Adding score to leaderbord, one second..."
 label_settings = SubResource("LabelSettings_jb6in")
 horizontal_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_jb6in")
 placeholder_text = "ENTER INITIALS"
 alignment = 1
@@ -57,8 +87,10 @@ expand_to_text_length = true
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_jb6in")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jb6in")
 text = "Save and Try Again"
 
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

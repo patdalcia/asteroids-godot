@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4oagtf654lm5"
-path="res://.godot/imported/Asteroids.png-b3d8e9cca250775aebb79706a499884d.ctex"
+uid="uid://b3qywbye6cpxb"
+path="res://.godot/imported/index.apple-touch-icon.png-bec44240503e0edb75d852ab0cc26d58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://exports/web/Asteroids.png"
-dest_files=["res://.godot/imported/Asteroids.png-b3d8e9cca250775aebb79706a499884d.ctex"]
+source_file="res://exports/web/index.apple-touch-icon.png"
+dest_files=["res://.godot/imported/index.apple-touch-icon.png-bec44240503e0edb75d852ab0cc26d58.ctex"]
 
 [params]
 

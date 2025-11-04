@@ -90,6 +90,12 @@ func submit_score(username, score):
 		#
 		_build_entries()
 
+func _input(event: InputEvent) -> void:
+	# Check for the custom action “start_game”
+	if event.is_action_pressed("accept") && visible:
+		# We treat it like the button was pressed
+		_on_submit_pressed()
+
 func _on_submit_pressed() -> void:
 	
 	emit_signal("start_game_pressed")

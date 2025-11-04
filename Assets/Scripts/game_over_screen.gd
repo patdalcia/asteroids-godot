@@ -2,16 +2,21 @@ extends Control
 
 signal submit_button_pressed(player_name)
 
-@onready var info_label = $StatusLabel
+@onready var info_label = $VBoxContainer/StatusLabel
 
 var player_name: String = ""
 
 func _set_info_text(new_text):
 	info_label.text = new_text
-
+	
+func _input(event: InputEvent) -> void:
+	# Check for the custom action “start_game”
+	if event.is_action_pressed("accept") && visible:
+		# We treat it like the button was pressed
+		_on_restart_button_pressed()
 
 func _on_restart_button_pressed():
-	player_name = $LineEdit.text.strip_edges()  # remove leading/trailing whitespace
+	player_name = $VBoxContainer/LineEdit.text.strip_edges()  # remove leading/trailing whitespace
 	# Convert to uppercase for uniformity (optional)
 	player_name = player_name.to_upper()
 

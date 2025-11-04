@@ -10,6 +10,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fccik"]
 font = ExtResource("2_fccik")
+font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
@@ -19,32 +20,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_e0onf")
 
-[node name="Score" type="Label" parent="."]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 19.0
-offset_right = 198.0
-offset_bottom = 61.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 text = "SCORE: 9999"
 label_settings = SubResource("LabelSettings_e0onf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Lives" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 1206.0001
-offset_right = 1206.0001
-scale = Vector2(0.38268906, 0.38268906)
-alignment = 1
-
-[node name="Level" type="Label" parent="."]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 67.0
-offset_right = 68.0
-offset_bottom = 90.0
+[node name="Level" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_fccik")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Lives" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+alignment = 1

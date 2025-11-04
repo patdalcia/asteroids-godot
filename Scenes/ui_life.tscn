@@ -1,11 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cabqocsof7w1r"]
 
-[ext_resource type="Texture2D" uid="uid://dfdge6yjl65m7" path="res://Assets/Textures/spaceship-black.png" id="1_kqeco"]
+[ext_resource type="Texture2D" uid="uid://be2otpwtakh47" path="res://Assets/Textures/life_icon_black.png" id="1_kqeco"]
 
 [node name="UILife" type="TextureRect"]
-offset_left = 1294.0
-offset_top = 21.0
-offset_right = 1422.0
-offset_bottom = 149.0
-scale = Vector2(0.27545434, 0.27545434)
+offset_right = 64.0
+offset_bottom = 64.0
 texture = ExtResource("1_kqeco")

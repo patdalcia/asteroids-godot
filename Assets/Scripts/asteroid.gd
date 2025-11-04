@@ -1,7 +1,7 @@
 class_name Asteroid
 extends Area2D
 
-signal exploded(pos: Vector2, side_count: int, points: int, velocity: Vector2)
+signal exploded(pos: Vector2, side_count: int, points: int, velocity: Vector2, color: Color)
 
 @export var radius: float = 50.0
 @export var line_width: float = 2.0
@@ -10,9 +10,8 @@ signal exploded(pos: Vector2, side_count: int, points: int, velocity: Vector2)
 
 @onready var coll_poly := $CollisionPolygon2D
 
-# Movement properties
 var velocity: Vector2 = Vector2.ZERO
-var speed: float = 50.0
+var speed: float = 30.0
 var rotation_speed: float = 0.0
 
 enum AsteroidSize { LARGE, MEDIUM, SMALL }
@@ -32,7 +31,6 @@ var points: int:
 func _ready():
 	randomize()
 	if velocity == Vector2.ZERO:
-		# only pick a random direction if none provided
 		var angle = randf_range(0, TAU)
 		velocity = Vector2(cos(angle), sin(angle))
 	rotation_speed = randf_range(-2.0, 2.0)
@@ -50,8 +48,8 @@ func _ready():
 		8: speed = randf_range(60, 80)
 		_ : speed = randf_range(50, 70)
 
-	# Debug print
-	print("Asteroid spawned – sides=", sides, " velocity=", velocity, " speed=", speed)
+	# set outline colour to match modulate
+	line_color = modulate
 
 func _physics_process(delta: float):
 	rotation += rotation_speed * delta
@@ -85,7 +83,7 @@ func _draw():
 		draw_line(p1, p2, line_color, line_width)
 
 func explode():
-	emit_signal("exploded", global_position, sides, points, velocity)
+	emit_signal("exploded", global_position, sides, points, velocity, modulate)
 	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:

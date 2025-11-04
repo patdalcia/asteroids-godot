@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgj0dk60t8vog"]
+[gd_scene load_steps=5 format=3 uid="uid://cgj0dk60t8vog"]
 
 [ext_resource type="Script" uid="uid://6dmmfllknf4d" path="res://Assets/Scripts/start_game_screen.gd" id="1_07r4g"]
 [ext_resource type="FontFile" uid="uid://b32u6qqntep2x" path="res://Assets/Fonts/ProggyClean.ttf" id="2_uohrs"]
@@ -6,6 +6,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_uohrs"]
 font = ExtResource("2_uohrs")
 font_size = 56
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7jio"]
+font = ExtResource("2_uohrs")
+font_size = 40
 font_color = Color(0, 0, 0, 1)
 
 [node name="StartGameScreen" type="Control"]
@@ -17,39 +22,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_07r4g")
 
-[node name="start_game_label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.5
-offset_top = -135.0
-offset_right = 158.5
-offset_bottom = -47.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "ASTEROIDS - Lovingly Cloned by Patdalcia <3"
+alignment = 1
+
+[node name="start_game_label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Move with [wasd], [arrows], or [touch buttons]."
 label_settings = SubResource("LabelSettings_uohrs")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="start_game_button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.5
-offset_top = -25.0
-offset_right = 48.5
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="start_game_label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "shoot with [space]"
+label_settings = SubResource("LabelSettings_uohrs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start_game_label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Press [enter] or tap button to start"
+label_settings = SubResource("LabelSettings_x7jio")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start_game_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("2_uohrs")
 theme_override_font_sizes/font_size = 30
 text = "START"
 
-[connection signal="pressed" from="start_game_button" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/start_game_button" to="." method="_on_start_game_button_pressed"]
