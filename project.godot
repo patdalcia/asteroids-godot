@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 Global="*res://global.gd"
+Talo="*res://addons/talo/talo_manager.gd"
 
 [display]
 
@@ -30,7 +30,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
+enabled=PackedStringArray("res://addons/talo/plugin.cfg")
 
 [input]
 

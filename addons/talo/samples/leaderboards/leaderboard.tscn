@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://10aipp4jmgtd"]
+
+[ext_resource type="Script" uid="uid://b130i3slrurbc" path="res://addons/talo/samples/leaderboards/scripts/leaderboard.gd" id="1_ul1ks"]
+[ext_resource type="Theme" uid="uid://ce2uyi827vc5x" path="res://addons/talo/samples/authentication/assets/theme.tres" id="2_aw1ey"]
+[ext_resource type="FontFile" uid="uid://b32u6qqntep2x" path="res://Assets/Fonts/ProggyClean.ttf" id="3_c6q6l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_emqx7"]
+font = ExtResource("3_c6q6l")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_c6q6l"]
+font = ExtResource("3_c6q6l")
+font_size = 32
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ul1ks")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.160784, 0.215686, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="LeaderboardName" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_aw1ey")
+text = "{leaderboard} entries"
+label_settings = SubResource("LabelSettings_emqx7")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Loading..."
+label_settings = SubResource("LabelSettings_c6q6l")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 300)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Entries" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Submit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_aw1ey")
+theme_override_fonts/font = ExtResource("3_c6q6l")
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Submit" to="." method="_on_submit_pressed"]

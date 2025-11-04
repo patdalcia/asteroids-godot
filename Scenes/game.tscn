@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgj0dk60t8vog" path="res://Scenes/start_game_screen.tscn" id="5_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://cjqn5b4sx3adh" path="res://Scenes/player_spawn_area.tscn" id="6_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://10vu5oorgmul" path="res://Scenes/player.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://b2h8ok8yfc7wb" path="res://addons/silent_wolf/Scores/Leaderboard.tscn" id="6_v158k"]
+[ext_resource type="PackedScene" uid="uid://10aipp4jmgtd" path="res://addons/talo/samples/leaderboards/leaderboard.tscn" id="6_v158k"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qxrlw")
@@ -26,7 +26,6 @@ visible = false
 visible = false
 
 [node name="Leaderboard" parent="UI" instance=ExtResource("6_v158k")]
-position = Vector2(54, 0)
 
 [node name="Player" parent="." instance=ExtResource("6_i6g32")]
 position = Vector2(643, 355)

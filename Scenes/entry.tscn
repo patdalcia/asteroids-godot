@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://vghfbbffhw65"]
+
+[ext_resource type="FontFile" uid="uid://b32u6qqntep2x" path="res://Assets/Fonts/ProggyClean.ttf" id="1_oodbi"]
+[ext_resource type="Script" uid="uid://cs3y374scnqs4" path="res://Assets/Scripts/label.gd" id="1_xsdkm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s8422"]
+font = ExtResource("1_oodbi")
+font_size = 24
+
+[node name="Entry" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "{pos}. {username} scored: {score} points"
+label_settings = SubResource("LabelSettings_s8422")
+horizontal_alignment = 1
+script = ExtResource("1_xsdkm")

@@ -2,7 +2,13 @@ extends Control
 
 signal submit_button_pressed(player_name)
 
+@onready var info_label = $StatusLabel
+
 var player_name: String = ""
+
+func _set_info_text(new_text):
+	info_label.text = new_text
+
 
 func _on_restart_button_pressed():
 	player_name = $LineEdit.text.strip_edges()  # remove leading/trailing whitespace
@@ -31,6 +37,8 @@ func _on_restart_button_pressed():
 	# If everything is valid:
 	print("Initials accepted:", player_name)
 	
+	info_label.text = "Adding score to leaderbord, one second..."
+	
 	emit_signal("submit_button_pressed", player_name)
 	# Proceed to reload or go to next screen
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()

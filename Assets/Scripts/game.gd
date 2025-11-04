@@ -152,6 +152,7 @@ func _on_next_level_button_pressed() -> void:
 	start_level()
 	
 func _on_start_game_button_pressed() -> void:
+	print("INSIDE START")
 	start_ui.visible = false
 	
 	hud.visible = true
@@ -161,5 +162,42 @@ func _on_start_game_button_pressed() -> void:
 	start_level()
 
 func _on_submit_button_pressed(player_name) -> void:
-	SilentWolf.Scores.save_score(player_name, score)
+	# Save Score logic goes here
 	print("NAME: " + player_name + " SCORE: " + str(score))
+	
+	
+	
+	var password = "1234"
+	var res = await Talo.player_auth.register(player_name, password)
+	print("HERE")
+	if res != OK:
+		match Talo.player_auth.last_error.get_code():
+			TaloAuthError.ErrorCode.IDENTIFIER_TAKEN:
+				print("Username is already taken")
+				#res = await Talo.players.identify("username", player_name)
+				res = await Talo.player_auth.login(player_name, password)
+				match res:
+					Talo.player_auth.LoginResult.FAILED:
+						match Talo.player_auth.last_error.get_code():
+							TaloAuthError.ErrorCode.INVALID_CREDENTIALS:
+								print("Username or password is incorrect")
+							_:
+								print(Talo.player_auth.last_error.get_string())
+					Talo.player_auth.LoginResult.VERIFICATION_REQUIRED:
+						print("Verification required")
+					Talo.player_auth.LoginResult.OK:
+						pass
+					_:
+						print(Talo.player_auth.last_error.get_string())
+	#var res := await Talo.leaderboards.add_entry("asteroids-leaderboard", score)
+	
+	if res == OK:
+		
+		res = await Talo.leaderboards.add_entry("asteroids-leaderboard", score)
+		game_over_screen._set_info_text("Adding Score to Leaderboard, one second...")
+		print("You scored %s points" % [score,  " Your highscore was updated!" if res.updated else "ERRK"])
+		assert(is_instance_valid(res))
+		print("You scored %s points" % [score,  " Your highscore was updated!" if res.updated else ""])
+	
+	start_ui.submit_score(player_name, score)
+	get_tree().reload_current_scene()
