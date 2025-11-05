@@ -5,7 +5,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_s8422"]
 font = ExtResource("1_oodbi")
-font_size = 24
+font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [node name="Entry" type="Label"]

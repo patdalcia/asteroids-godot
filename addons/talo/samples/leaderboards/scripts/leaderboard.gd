@@ -17,7 +17,6 @@ var _filter_idx: int
 
 func _ready() -> void:
 	# leaderboard_name.text = leaderboard_name.text.replace("{leaderboard}", leaderboard_internal_name)
-	leaderboard_name.text = "Asteroids - made with love by patdalcia <3"
 	await _load_entries()
 	_set_entry_count()
 

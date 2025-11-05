@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://10aipp4jmgtd"]
+[gd_scene load_steps=8 format=3 uid="uid://10aipp4jmgtd"]
 
 [ext_resource type="Script" uid="uid://b130i3slrurbc" path="res://addons/talo/samples/leaderboards/scripts/leaderboard.gd" id="1_ul1ks"]
 [ext_resource type="Theme" uid="uid://ce2uyi827vc5x" path="res://addons/talo/samples/authentication/assets/theme.tres" id="2_aw1ey"]
@@ -6,7 +6,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_emqx7"]
 font = ExtResource("3_c6q6l")
-font_size = 60
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4e70w"]
+font = ExtResource("3_c6q6l")
+font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hcsx1"]
@@ -28,16 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ul1ks")
 
-[node name="Background" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.121569, 0.160784, 0.215686, 1)
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -52,6 +47,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 24
 
@@ -59,12 +55,24 @@ theme_override_constants/separation = 24
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("2_aw1ey")
-text = "ASTEROIDS - Lovingly made by patdalcia <3"
+text = "~ ASTEROIDS ~"
 label_settings = SubResource("LabelSettings_emqx7")
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
+
+[node name="LeaderboardName2" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_aw1ey")
+text = "Lovingly made by patdalcia <3"
+label_settings = SubResource("LabelSettings_4e70w")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -103,5 +111,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_c6q6l")
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.160784, 0.215686, 1)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Submit" to="." method="_on_submit_pressed"]

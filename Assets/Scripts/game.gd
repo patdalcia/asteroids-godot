@@ -62,6 +62,8 @@ var background_color : Color = Color.BLACK
 #func _input(event: InputEvent) -> void:
 	#if start_ui.visible && event.is_action_pressed("accept"):
 		#start_ui._on_start_game_button_pressed()
+		
+
 
 func _ready():
 	randomize()
@@ -69,6 +71,11 @@ func _ready():
 	level_success_screen.visible = false
 	hud.visible = false
 	player.visible = false
+	
+	var vsz: Vector2 = get_viewport().size
+	# Centering player spawn
+	player_spawn_pos.global_position.x = vsz.x
+	player_spawn_pos.global_position.y = vsz.y * 0.5
 
 	score = 0
 	lives = 3
@@ -85,6 +92,8 @@ func _ready():
 		game_over_screen.connect("submit_button_pressed", Callable(self, "_on_submit_button_pressed"))
 	if info_ui.has_signal("accept_info_pressed"):
 		info_ui.connect("accept_info_pressed", Callable(self, "start_pressed"))
+	if game_over_screen.has_signal("submit_button_pressed_no_score"):
+		game_over_screen.connect("submit_button_pressed_no_score", Callable(self, "_on_submit_button_pressed_no_score"))
 
 	player.set_process_input(false)
 	player.set_process(false)
@@ -182,6 +191,11 @@ func _on_player_died():
 		await get_tree().create_timer(1.0).timeout
 		while !player_spawn_area.is_empty:
 			await get_tree().create_timer(0.1).timeout
+		#Centering player spawn position
+		var vsz: Vector2 = get_viewport().size
+		# Centering player spawn
+		player_spawn_pos.global_position.x = vsz.x * 0.5
+		player_spawn_pos.global_position.y = vsz.y * 0.5
 		player.respawn(player_spawn_pos.global_position)
 
 func level_cleared() -> void:
@@ -208,6 +222,8 @@ func start_pressed() -> void:
 	player.visible = true
 	level = 1
 	start_level()
+func _on_submit_button_pressed_no_score():
+	get_tree().reload_current_scene()
 
 func _on_submit_button_pressed(player_name) -> void:
 	print("NAME: " + player_name + " SCORE: " + str(score))

@@ -22,24 +22,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_07r4g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="start_game_label" type="Label" parent="VBoxContainer"]
+[node name="start_game_label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 180)
 layout_mode = 2
 size_flags_vertical = 10
 text = "Move with [wasd], [arrows], or [touch buttons]."
 label_settings = SubResource("LabelSettings_uohrs")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="start_game_label3" type="Label" parent="VBoxContainer"]
+[node name="start_game_label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 text = "shoot with [space]"
@@ -47,7 +56,7 @@ label_settings = SubResource("LabelSettings_uohrs")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="start_game_label2" type="Label" parent="VBoxContainer"]
+[node name="start_game_label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "Press [enter] or tap button to start"
@@ -55,7 +64,7 @@ label_settings = SubResource("LabelSettings_x7jio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="start_game_button" type="Button" parent="VBoxContainer"]
+[node name="start_game_button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -63,4 +72,4 @@ theme_override_fonts/font = ExtResource("2_uohrs")
 theme_override_font_sizes/font_size = 30
 text = "START"
 
-[connection signal="pressed" from="VBoxContainer/start_game_button" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/start_game_button" to="." method="_on_start_game_button_pressed"]
